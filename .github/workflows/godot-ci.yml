@@ -21,8 +21,10 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
           cp -rvf /templates/${GODOT_VERSION}.stable/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+          git clone https://github.com/stmSi/Ultimate-Myanmar-Typing-Wizard.git
       - name: Windows Build
         run: |
+          cd Ultimate-Myanmar-Typing-Wizard
           mkdir -v -p build/windows
           cp -rvf Texts build/windows/
           godot --headless --export-debug "Windows Desktop"
@@ -30,8 +32,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ultimate-myanmar-typing-wizard_windows_debug_x64_64.zip
-          path: build/windows
+          name: ultimate-myanmar-typing-wizard_windows_debug_x64_64
+          path: Ultimate-Myanmar-Typing-Wizard/build/windows
 
   export-linux:
     name: Linux Export
@@ -47,8 +49,10 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
           cp -rvf /templates/${GODOT_VERSION}.stable/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+          git clone https://github.com/stmSi/Ultimate-Myanmar-Typing-Wizard.git
       - name: Linux Build
         run: |
+          cd Ultimate-Myanmar-Typing-Wizard
           mkdir -v -p build/linux
           cp -rvf Texts build/linux/
           godot --headless --export-debug "Linux/X11"
@@ -56,8 +60,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ultimate-myanmar-typing-wizard_linux_debug_x86_x64.zip
-          path: build/linux
+          name: ultimate-myanmar-typing-wizard_linux_debug_x86_x64
+          path: Ultimate-Myanmar-Typing-Wizard/build/linux
 
   # export-web:
   #   name: Web Export
